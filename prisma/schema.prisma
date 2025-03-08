@@ -14,11 +14,11 @@ datasource db {
 }
 
 model OrderItem {
-  id           String   @id @default(uuid())
+  id           Int      @id @default(autoincrement())
   customer     Customer @relation(fields: [customerId], references: [id])
-  customerId   String
+  customerId   Int
   item         Item     @relation(fields: [itemId], references: [id])
-  itemId       String
+  itemId       Int
   price        Int
   orderedAt    DateTime
   deliveredAt  DateTime?
@@ -27,24 +27,24 @@ model OrderItem {
 }
 
 model OrderItemOption {
-  id         String    @id @default(uuid())
+  id         Int       @id @default(autoincrement())
   orderItem  OrderItem @relation(fields: [orderItemId], references: [id])
-  orderItemId String
+  orderItemId Int
   option     Option    @relation(fields: [optionId], references: [id])
-  optionId   String
+  optionId   Int
 }
 
 model Customer {
-  id          String    @id @default(uuid())
+  id          Int       @id @default(autoincrement())
   table       Table     @relation(fields: [tableId], references: [id])
-  tableId     String
+  tableId     Int
   checkedInAt  DateTime
   checkedOutAt DateTime?
   orders      OrderItem[]
 }
 
 model Table {
-  id        String     @id @default(uuid())
+  id        Int      @id @default(autoincrement())
   tableName String
   customers Customer[]
 }
@@ -52,43 +52,43 @@ model Table {
 
 
 model Item {
-  id            String     @id @default(uuid())
-  category      ItemCategory @relation(fields: [itemCategoryId], references: [id])
-  itemCategoryId String
-  name          String
-  thumbnailUrl  String
-  price         Int
-  isAvailable   Boolean
-  orders        OrderItem[]
+  id             Int      @id @default(autoincrement())
+  category       ItemCategory @relation(fields: [itemCategoryId], references: [id])
+  itemCategoryId Int
+  name           String
+  thumbnailUrl   String
+  price          Int
+  isAvailable    Boolean
+  orders         OrderItem[]
   availableOptionCategories AvailableOptionCategory[]
 }
 
 model ItemCategory {
-  id    String @id @default(uuid())
+  id    Int      @id @default(autoincrement())
   name  String
   items Item[]
 }
 
 model Option {
-  id                String @id @default(uuid())
+  id                Int      @id @default(autoincrement())
   category          OptionCategory @relation(fields: [optionCategoryId], references: [id])
-  optionCategoryId  String
-  name             String
-  price            Int
-  defaultSelect    Boolean
-  orderItemOptions OrderItemOption[]
+  optionCategoryId  Int
+  name              String
+  price             Int
+  defaultSelect     Boolean
+  orderItemOptions  OrderItemOption[]
 }
 
 model AvailableOptionCategory {
-  id               String @id @default(uuid())
-  item            Item @relation(fields: [itemId], references: [id])
-  itemId         String
+  id             Int      @id @default(autoincrement())
+  item           Item @relation(fields: [itemId], references: [id])
+  itemId         Int
   optionCategory OptionCategory @relation(fields: [optionCategoryId], references: [id])
-  optionCategoryId String
+  optionCategoryId Int
 }
 
 model OptionCategory {
-  id              String @id @default(uuid())
+  id              Int      @id @default(autoincrement())
   name            String
   multiSelectable Boolean
   options         Option[]
