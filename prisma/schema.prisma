@@ -56,7 +56,7 @@ model Item {
   category       ItemCategory @relation(fields: [itemCategoryId], references: [id])
   itemCategoryId Int
   name           String
-  thumbnailUrl   String
+  thumbnailUrl   String @default("/default_image.svg")
   price          Int
   isAvailable    Boolean
   orders         OrderItem[]
