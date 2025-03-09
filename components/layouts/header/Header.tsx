@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 flex h-24 w-full items-center justify-between border-b bg-white px-4 md:px-6">
       <div className="flex items-center gap-2">
-        <h1 className="text-3xl font-bold text-sky-500">ほま寿司</h1>
+        <h1 className="text-3xl font-bold text-sky-500 pl-5">ほま寿司</h1>
         <div className="ml-2 rounded-md border border-black-200 bg-white px-2 py-1 text-sm text-black-500">
           <span>1卓</span>
         </div>
