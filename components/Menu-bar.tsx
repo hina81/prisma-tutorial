@@ -10,9 +10,9 @@ const MenuBar = ({ itemCategory }: itemCategoryProps) => {
   return (
     <div>
       <Menubar className="rounded-lg border shadow-sm mb-5">
-        {itemCategory.map((itemCategory: itemCategoryData) => (
-          <MenubarMenu key={itemCategory.id}>
-            <MenubarTrigger className="font-medium">{itemCategory.name}</MenubarTrigger>
+        {itemCategory.map((category: itemCategoryData) => (
+          <MenubarMenu key={category.id}>
+            <MenubarTrigger className="font-medium">{category.name}</MenubarTrigger>
           </MenubarMenu>
         ))}
       </Menubar>

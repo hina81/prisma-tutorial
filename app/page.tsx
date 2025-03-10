@@ -1,15 +1,6 @@
 import ItemCardList from "@/components/ItemCardList";
 import MenuBar from "@/components/Menu-bar";
-import { itemData, itemCategoryData } from "./types/types";
-
-async function getAllItems() {
-  const response = await fetch("http://localhost:3000/api/items", {
-    next: { revalidate: 300 },
-  });
-
-  const allItems: itemData[] = await response.json();
-  return allItems;
-}
+import { itemCategoryData } from "./types/types";
 
 async function getItemCategory() {
   const response = await fetch("http://localhost:3000/api/item-categories", {
@@ -20,8 +11,11 @@ async function getItemCategory() {
 }
 
 export default async function Home() {
-  const allItems = await getAllItems();
   const itemCategory = await getItemCategory();
+  // itemCategory から items を取り出す
+  // flatMap でitems配列を1次元に
+  const allItems = itemCategory.flatMap((category) => category.items);
+
   return (
     <div className="m-10">
       {/* menuBarで選択したcategoryのみitemCardListで表示 */}

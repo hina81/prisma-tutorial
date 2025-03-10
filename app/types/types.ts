@@ -10,4 +10,5 @@ export interface itemData {
 export interface itemCategoryData {
   id: number;
   name: string;
+  items: itemData[];
 }
