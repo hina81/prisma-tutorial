@@ -9,4 +9,5 @@ constは複数の値をエクスポートできるから{}で指定する必要�
 
 今のprismaClientは {} の方
 
-## 
+## Supabase の select メソッドで リレーション込みで取得
+https://supabase.com/docs/reference/javascript/typescript-support
