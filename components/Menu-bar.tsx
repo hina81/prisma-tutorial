@@ -4,15 +4,21 @@ import { itemCategoryData } from "@/app/types/types";
 
 interface itemCategoryProps {
   itemCategory: itemCategoryData[];
+  onSelectCategory: (id: number | null) => void;
 }
 
-const MenuBar = ({ itemCategory }: itemCategoryProps) => {
+const MenuBar = ({ itemCategory, onSelectCategory }: itemCategoryProps) => {
   return (
     <div>
       <Menubar className="rounded-lg border shadow-sm mb-5">
-        {itemCategory.map((category: itemCategoryData) => (
+        {itemCategory.map((category) => (
           <MenubarMenu key={category.id}>
-            <MenubarTrigger className="font-medium">{category.name}</MenubarTrigger>
+            <MenubarTrigger
+              className="font-medium"
+              onClick={() => onSelectCategory(category.id)}
+            >
+              {category.name}
+            </MenubarTrigger>
           </MenubarMenu>
         ))}
       </Menubar>
