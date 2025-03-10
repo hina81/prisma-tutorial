@@ -6,3 +6,8 @@ export interface itemData {
   price: number;
   isAvailable: boolean;
 }
+
+export interface itemCategoryData {
+  id: number;
+  name: string;
+}

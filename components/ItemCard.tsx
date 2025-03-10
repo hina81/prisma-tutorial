@@ -15,6 +15,8 @@ interface itemDataProps {
 
 const ItemCard = ({ itemData }: itemDataProps) => {
   const { name, thumbnailUrl, price, isAvailable, itemCategoryId } = itemData;
+  // isAvailableはトッピングつけれるかつけれないか
+  // itemCategoryIdは寿司:1かドリンク:2かサイドメニュー:3か
 
   return (
     <div>

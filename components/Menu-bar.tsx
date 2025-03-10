@@ -1,22 +1,22 @@
 import React from "react";
 import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
+import { itemCategoryData } from "@/app/types/types";
 
-export default function MenuBar() {
+interface itemCategoryProps {
+  itemCategory: itemCategoryData[];
+}
+
+const MenuBar = ({ itemCategory }: itemCategoryProps) => {
   return (
     <div>
       <Menubar className="rounded-lg border shadow-sm mb-5">
-        <MenubarMenu>
-          <MenubarTrigger className="font-medium">寿司</MenubarTrigger>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger className="font-medium">ドリンク</MenubarTrigger>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger className="font-medium">
-            サイドメニュー
-          </MenubarTrigger>
-        </MenubarMenu>
+        {itemCategory.map((itemCategory: itemCategoryData) => (
+          <MenubarMenu key={itemCategory.id}>
+            <MenubarTrigger className="font-medium">{itemCategory.name}</MenubarTrigger>
+          </MenubarMenu>
+        ))}
       </Menubar>
     </div>
   );
-}
+};
+export default MenuBar;
