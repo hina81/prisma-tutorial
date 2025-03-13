@@ -9,6 +9,5 @@ export async function GET(req: Request) {
       items: true,
     },
   });
-  console.log(itemCategory);
   return NextResponse.json(itemCategory);
 }
