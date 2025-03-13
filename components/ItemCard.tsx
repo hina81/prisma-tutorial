@@ -6,18 +6,18 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import Image from "next/image";
-import { Button } from "./ui/button";
-import { itemData } from "@/app/types/types";
+import { itemData, optionsData } from "@/app/types/types";
+import ItemDetail from "@/app/modal/itemDetail";
 
 interface itemDataProps {
   itemData: itemData;
+  options: optionsData[];
 }
 
-const ItemCard = ({ itemData }: itemDataProps) => {
-  const { name, thumbnailUrl, price, isAvailable, itemCategoryId } = itemData;
+const ItemCard = ({ itemData, options }: itemDataProps) => {
+  const { name, thumbnailUrl, price, isAvailable} = itemData;
+  console.log(options)
   // isAvailableはトッピングつけれるかつけれないか
-  // itemCategoryIdは寿司:1かドリンク:2かサイドメニュー:3か
-
   return (
     <div>
       <Card className="cursor-pointer transition-all hover:shadow-md p-0">
@@ -33,9 +33,7 @@ const ItemCard = ({ itemData }: itemDataProps) => {
           <CardDescription className="text-sm font-medium">
             ¥{price}
           </CardDescription>
-          <Button className="bg-sky-500 text-white hover:bg-sky-600">
-            選択する
-          </Button>
+          <ItemDetail itemData={itemData} />
         </CardHeader>
       </Card>
     </div>
